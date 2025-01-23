@@ -1,0 +1,8 @@
+%dw 2.0
+output application/csv separator="|", lineSeparator="\n" ,quoteValues=true
+---
+payload map (record) ->
+record mapObject ((value, key) -> 
+(key as String): value replace /[\r\n]/ with " "
+
+)
